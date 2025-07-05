@@ -46,9 +46,11 @@ jobs:
               run: npm run test:coverage
               env:
                   PORT: ${{ secrets.PORT }}
-                  BACKEND_PROXY: ${{ secrets.BACKEND_PROXY }}
                   VITE_ENV: ${{ vars.VITE_ENV }}
+                  SETUP_SCRIPT_RAN: ${{ vars.SETUP_SCRIPT_RAN }}
                   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+                  VITE_CONVEX_URL: ${{ secrets.VITE_CONVEX_URL }}
+                  CONVEX_DEPLOYMENT: ${{ secrets.CONVEX_DEPLOYMENT }}
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     production:
@@ -72,10 +74,12 @@ jobs:
               run: npm run build
               env:
                   PORT: ${{ secrets.PORT }}
-                  BACKEND_PROXY: ${{ secrets.BACKEND_PROXY }}
                   VITE_ENV: ${{ vars.VITE_ENV }}
+                  SETUP_SCRIPT_RAN: ${{ vars.SETUP_SCRIPT_RAN }}
                   SENTRY_TOKEN: ${{ secrets.SENTRY_TOKEN }}
                   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+                  VITE_CONVEX_URL: ${{ secrets.VITE_CONVEX_URL }}
+                  CONVEX_DEPLOYMENT: ${{ secrets.CONVEX_DEPLOYMENT }}
             - name: Upload build artifacts
               uses: actions/upload-artifact@v4
               with:
